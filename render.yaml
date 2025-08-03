@@ -2,12 +2,10 @@ services:
   - type: web
     name: reconocimiento-facial-unah
     runtime: python
-    pythonVersion: "3.9"  # Forzar Python 3.9
-    buildCommand: bash setup.sh
+    pythonVersion: "3.9"  # Especifica Python 3.9 explícitamente
+    buildCommand: pip install -r requirements.txt
     startCommand: streamlit run app.py --server.port=$PORT --server.address=0.0.0.0
     envVars:
       - key: PYTHONUNBUFFERED
         value: TRUE
-      - key: DLIB_USE_CUDA
-        value: "0"
     plan: free
